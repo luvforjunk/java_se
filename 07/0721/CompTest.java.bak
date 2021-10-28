@@ -1,0 +1,13 @@
+class CompTest {
+	public static void main(String[] args) {
+		int score = 60;
+
+		String result = score>=80 && score<=100 ? "합격" : "불합격";
+		System.out.println("결과 = " = result);
+/*
+		1. String result = score.=80 && score<=100 ? "합격" : "불합격"
+		2. System.out.println(score>=80
+		System.out.println("Hello World!");
+		*/
+	}
+}

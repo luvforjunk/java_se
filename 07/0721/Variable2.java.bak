@@ -1,0 +1,7 @@
+class Variable2 {
+	int a; //필드
+	public static void main(String[] args) {
+		int a; //지역변수, 쓰래기값
+		System.out.println("지역변수 a =" +a);
+	}
+}

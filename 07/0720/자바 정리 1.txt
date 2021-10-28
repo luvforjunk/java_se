@@ -1,0 +1,69 @@
+c:
+    Program Files
+	java         
+		jdk1.8.0_291            -> JDK의 위치
+		bin   --------------> Path
+                        *.exe
+                      javac.exe (컴파일)
+                      java.exe  (실행)
+                  jre
+                             
+             jre1.8.0_291
+d:
+     java_se (작업공간)
+         lib (다운로드)
+
+<<JDK 설치 확인 방법>>
+
+
+C:\> 절대경로
+
+C:\Users\bitcamp>cd\
+
+C:\>cd "Program Files"
+
+C:\Program Files>cd java
+
+C:\Program Files\Java>cd jdk1.8.0_291
+
+C:\Program Files\Java\jdk1.8.0_291>cd bin
+
+C:\Program Files\Java\jdk1.8.0_291\bin>javac
+
+
+
+
+C:\Program Files\Java\jdk1.8.0_291\bin>javac -version
+javac 1.8.0_291
+
+C:\Program Files\Java\jdk1.8.0_291\bin>path
+PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\bitcamp\AppData\Local\Microsoft\WindowsApps;
+
+C:\Program Files\Java\jdk1.8.0_291\bin>
+
+
+
+내 PC - 속성 - 고급시스템 설정 - 환경변수 - path 더블클릭 - 새로만들기 - C:\Program Files\Java\jdk1.8.0_291\bin (*주소는 절대 손으로 쓰면 안됨)
+
+확인방법 ; 탐색기 path 입력
+
+
+JAVA_HOME (JDK의 위치)
+C:\Program Files\Java\jdk1.8.0_291   (=JAVA_HOME)
+
+Path
+C:\Program Files\Java\jdk1.8.0_291\bin
+%JAVA_HOME%\bin
+
+내 PC - 속성 - 고급시스템 설정 - 환경변수 - path 더블클릭 - 새로만들기 - 변수 이름 : JAVA_HOME 변수 값 : C:\Program Files\Java\jdk1.8.0_291\bin (*주소는 절대 손으로 쓰면 안됨)
+- path 변경
+
+
+
+
+C:\Users\bitcamp>d:
+
+D:\>cd java_se
+
+D:\java_se>dir
+

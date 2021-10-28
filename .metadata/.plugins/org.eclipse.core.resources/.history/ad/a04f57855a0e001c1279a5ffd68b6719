@@ -1,0 +1,189 @@
+package miniproject1;
+
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+
+public class HomeFrame extends JFrame implements ActionListener {
+	private JButton homeBtn, menuBtn, stampBtn, myBtn, logoutBtn, backBtn1, nextBtn1, backBtn2, nextBtn2;
+	private CardLayout card;
+	private JPanel topP, middleP, lowP;
+	private Image eventImg1, eventImg2, bestImg1;
+	private JLabel txtL, txtL2, txtL3, txtL4;
+	private String id, pwd;
+
+	public HomeFrame(String id, String pwd) {
+		this.id = id;
+		this.pwd = pwd;
+		AmasvinDAO dao = AmasvinDAO.getInstance(); // 싱글톤으로 바꿈
+		String name = dao.loginMember(id, pwd);
+		setTitle("반갑습니다, 아마스빈입니다");
+
+		JLabel txtL = new JLabel(name + "님 반갑습니다");
+		txtL.setFont(new Font("안동엄마까투리", Font.BOLD, 17));
+		txtL.setHorizontalAlignment(SwingConstants.CENTER);
+		txtL.setBounds(70, 50, 180, 30);
+
+		JLabel txtL2 = new JLabel("오랫동안 사랑하고,");
+		txtL2.setFont(new Font("맑은고딕", Font.PLAIN, 12));
+		txtL2.setHorizontalAlignment(SwingConstants.CENTER);
+		txtL2.setBounds(280, 130, 245, 30);
+
+		JLabel txtL3 = new JLabel("사랑받고 싶습니다.");
+		txtL3.setFont(new Font("맑은고딕", Font.PLAIN, 12));
+		txtL3.setHorizontalAlignment(SwingConstants.CENTER);
+		txtL3.setBounds(280, 150, 245, 30);
+
+		homeBtn = new JButton("홈");
+		menuBtn = new JButton("메뉴");
+		stampBtn = new JButton("스탬프");
+		myBtn = new JButton("내정보");
+		logoutBtn = new JButton("로그아웃");
+		nextBtn1 = new JButton(">");
+		backBtn1 = new JButton("<");
+
+		// 버튼(상단부) - 2개
+		backBtn1.setBounds(10, 160, 30, 30);
+		nextBtn1.setBounds(500, 80, 30, 30);
+
+		// 버튼(하단부) - 5개
+		JPanel p = new JPanel(); // FlowLayout
+		p.setBackground(new Color(195, 219, 242));
+		p.setLayout(new GridLayout(1, 5));
+		p.add(homeBtn);
+		p.add(menuBtn);
+		p.add(stampBtn);
+		p.add(myBtn);
+		p.add(logoutBtn);
+
+		topP = new JPanel();
+		topP.setLayout(null);
+		topP.setBackground(new Color(195, 219, 242));
+		topP.add(txtL);
+		topP.add(txtL2);
+		topP.add(txtL3);
+
+		card = new CardLayout();
+		middleP = new JPanel();
+		middleP.setLayout(card);
+		middleP.add(new HomeEvent1(), "HomeEvent1");
+		middleP.add(new HomeEvent2(), "HomeEvent2");
+//		middleP.add(backBtn1);
+//		middleP.add(nextBtn1);
+
+		lowP = new JPanel() {
+			@Override
+			public void paint(Graphics g) {
+
+				Toolkit t = Toolkit.getDefaultToolkit();
+				Image bestImg1 = t.getImage("Image/추천메뉴1.jpg");
+				g.drawImage(bestImg1, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
+
+		JPanel wp = new JPanel(new GridLayout(3, 1, 5, 5));
+		wp.add(topP);
+		wp.add(middleP);
+		wp.add(lowP);
+
+		Container c = this.getContentPane();
+		c.add("South", p);
+		c.add("Center", wp);
+		c.add("East", nextBtn1);
+		c.add("West", backBtn1);
+		c.setBackground(new Color(195, 219, 242));
+
+		setBounds(800, 150, 640, 760);
+		setVisible(true);
+		setBackground(new Color(195, 219, 242));
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		// 이벤트
+		nextBtn1.addActionListener(this);
+		backBtn1.addActionListener(this);
+		homeBtn.addActionListener(this);
+		menuBtn.addActionListener(this);
+		stampBtn.addActionListener(this);
+		myBtn.addActionListener(this);
+		logoutBtn.addActionListener(this);
+	}
+
+	// 버튼 이벤트
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == backBtn1) {
+			card.show(middleP, "HomeEvent1");
+		} else if (e.getSource() == nextBtn1) {
+			card.show(middleP, "HomeEvent2");
+		}
+
+		homeBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new HomeFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		menuBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Menu(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		stampBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new StampFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		myBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new InfoFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		logoutBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new LoginFrame();
+				setVisible(false);
+			}
+		});
+	}
+
+//	public static void main(String[] args) {
+//		new HomeFrame();
+//	}
+}

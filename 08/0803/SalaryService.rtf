@@ -1,0 +1,142 @@
+{\rtf1\ansi\ansicpg949\deff0\nouicompat\deflang1033\deflangfe1042{\fonttbl{\f0\fnil Consolas;}{\f1\fnil\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}}
+{\colortbl ;\red127\green0\blue85;\red0\green0\blue0;\red0\green0\blue192;\red106\green62\blue62;\red63\green127\blue95;\red42\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sl276\slmult1\cf1\b\f0\fs16\lang18 package\cf2\b0  constructor;\cf0\par
+\par
+\cf1\b import\cf2\b0  java.text.DecimalFormat;\cf0\par
+\cf1\b import\cf2\b0  java.util.Scanner;\cf0\par
+\par
+\cf1\b public\cf2\b0  \cf1\b class\cf2\b0  SalaryService \{\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  SalaryDTO[] \cf3 ar\cf2 ;\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  Scanner \cf3 scan\cf2  = \cf1\b new\cf2\b0  Scanner(System.\cf3\b\i in\cf2\b0\i0 );\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  DecimalFormat \cf3 df\cf2  = \cf1\b new\cf2\b0  DecimalFormat();\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  SalaryService(SalaryDTO[] \cf4 ar\cf2 ) \{\cf0\par
+\cf2\tab\tab\cf1\b this\cf2\b0 .\cf3 ar\cf2  = \cf4 ar\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  menu() \{ \cf5 // \f1\'b1\'b8\'c7\'f6\cf0\f0\par
+\cf2\tab\tab\cf1\b int\cf2\b0  \cf4 num\cf2 ;\cf0\par
+\par
+\cf2\tab\tab\cf1\b while\cf2\b0  (\cf1\b true\cf2\b0 ) \{\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println();\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "********************"\cf2 );\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "     1. \f1\'bb\'e7\'bf\'f8\f0  \f1\'b5\'ee\'b7\'cf\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "     2. \f1\'c0\'fc\'c3\'bc\f0  \f1\'c3\'e2\'b7\'c2\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "     3. \f1\'bb\'e7\'bf\'f8\f0  \f1\'c1\'a4\'ba\'b8\f0  \f1\'bc\'f6\'c1\'a4\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "     4. \f1\'c5\'f0\'bb\'e7\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "     5. \f1\'b3\'a1\'b3\'bb\'b1\'e2\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "********************"\cf2 );\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .print(\cf6 "     \f1\'b9\'f8\'c8\'a3\f0  : "\cf2 );\cf0\par
+\cf2\tab\tab\tab\cf4 num\cf2  = \cf3 scan\cf2 .nextInt();\cf0\par
+\cf2\tab\tab\tab\cf1\b if\cf2\b0  (\cf4 num\cf2  == 5)\cf0\par
+\cf2\tab\tab\tab\tab\cf1\b break\cf2\b0 ;\cf0\par
+\par
+\cf2\tab\tab\tab\cf1\b if\cf2\b0  (\cf4 num\cf2  == 1)\cf0\par
+\cf2\tab\tab\tab\tab insertEmp();\cf0\par
+\cf2\tab\tab\tab\cf1\b else\cf2\b0  \cf1\b if\cf2\b0  (\cf4 num\cf2  == 2)\cf0\par
+\cf2\tab\tab\tab\tab display();\cf0\par
+\cf2\tab\tab\tab\cf1\b else\cf2\b0  \cf1\b if\cf2\b0  (\cf4 num\cf2  == 3)\cf0\par
+\cf2\tab\tab\tab\tab updateEmp();\cf0\par
+\cf2\tab\tab\tab\cf1\b else\cf2\b0  \cf1\b if\cf2\b0  (\cf4 num\cf2  == 4)\cf0\par
+\cf2\tab\tab\tab\tab deleteEmp();\cf0\par
+\cf2\tab\tab\} \cf5 // while\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b private\cf2\b0  \cf1\b void\cf2\b0  deleteEmp() \{\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .print(\cf6 "\f1\'bb\'e7\'bf\'f8\'b9\'f8\'c8\'a3\f0  \f1\'c0\'d4\'b7\'c2\f0  : "\cf2 );\cf0\par
+\cf2\tab\tab\cf1\b int\cf2\b0  \cf4 empId\cf2  = \cf3 scan\cf2 .nextInt();\cf0\par
+\par
+\cf2\tab\tab\cf1\b int\cf2\b0  \cf4 i\cf2 ;\cf0\par
+\cf2\tab\tab\cf1\b for\cf2\b0  (\cf4 i\cf2  = 0; \cf4 i\cf2  < \cf3 ar\cf2 .\cf3 length\cf2 ; \cf4 i\cf2 ++) \{\cf0\par
+\cf2\tab\tab\tab\cf1\b if\cf2\b0  (\cf3 ar\cf2 [\cf4 i\cf2 ] != \cf1\b null\cf2\b0 ) \{\cf0\par
+\cf2\tab\tab\tab\tab\cf1\b if\cf2\b0  (\cf3 ar\cf2 [\cf4 i\cf2 ].getEmpId() == \cf4 empId\cf2 ) \{\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf1\b break\cf2\b0 ;\cf0\par
+\cf2\tab\tab\tab\tab\}\cf0\par
+\cf2\tab\tab\tab\} \cf5 // if\cf0\par
+\cf2\tab\tab\} \cf5 // for\cf0\par
+\par
+\cf2\tab\tab\cf1\b if\cf2\b0  (\cf4 i\cf2  == \cf3 ar\cf2 .\cf3 length\cf2 ) \{\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'c3\'a3\'b0\'ed\'c0\'da\f0  \f1\'c7\'cf\'b4\'c2\f0  \f1\'bb\'e7\'bf\'f8\'c0\'cc\f0  \f1\'be\'f8\'bd\'c0\'b4\'cf\'b4\'d9\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\tab\cf1\b return\cf2\b0 ;\cf0\par
+\cf2\tab\tab\}\cf0\par
+\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ] = \cf1\b null\cf2\b0 ;\cf0\par
+\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println();\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'bb\'e8\'c1\'a6\f0  \f1\'bf\'cf\'b7\'e1\f0 ..."\cf2 );\cf0\par
+\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  updateEmp() \{\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .print(\cf6 "\f1\'bb\'e7\'bf\'f8\'b9\'f8\'c8\'a3\f0  \f1\'c0\'d4\'b7\'c2\f0  : "\cf2 );\cf0\par
+\cf2\tab\tab\cf1\b int\cf2\b0  \cf4 empId\cf2  = \cf3 scan\cf2 .nextInt();\cf0\par
+\par
+\cf2\tab\tab\cf1\b int\cf2\b0  \cf4 i\cf2 ;\cf0\par
+\cf2\tab\tab\cf1\b for\cf2\b0  (\cf4 i\cf2  = 0; \cf4 i\cf2  < \cf3 ar\cf2 .\cf3 length\cf2 ; \cf4 i\cf2 ++) \{\cf0\par
+\cf2\tab\tab\tab\cf1\b if\cf2\b0  (\cf3 ar\cf2 [\cf4 i\cf2 ] != \cf1\b null\cf2\b0 ) \{\cf0\par
+\cf2\tab\tab\tab\tab\cf1\b if\cf2\b0  (\cf3 ar\cf2 [\cf4 i\cf2 ].getEmpId() == \cf4 empId\cf2 ) \{\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf1\b break\cf2\b0 ;\cf0\par
+\cf2\tab\tab\tab\tab\}\cf0\par
+\cf2\tab\tab\tab\} \cf5 // if\cf0\par
+\cf2\tab\tab\} \cf5 // for\cf0\par
+\par
+\cf2\tab\tab\cf1\b if\cf2\b0  (\cf4 i\cf2  == \cf3 ar\cf2 .\cf3 length\cf2 ) \{\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'c3\'a3\'b0\'ed\'c0\'da\f0  \f1\'c7\'cf\'b4\'c2\f0  \f1\'bb\'e7\'bf\'f8\'c0\'cc\f0  \f1\'be\'f8\'bd\'c0\'b4\'cf\'b4\'d9\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\tab\cf1\b return\cf2\b0 ;\cf0\par
+\cf2\tab\tab\}\cf0\par
+\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf3 ar\cf2 [\cf4 i\cf2 ].getEmpId() + \cf6 "\\t"\cf2  + \cf3 ar\cf2 [\cf4 i\cf2 ].getName() + \cf6 "\\t"\cf2  + \cf3 ar\cf2 [\cf4 i\cf2 ].getPosition() + \cf6 "\\t"\cf0\par
+\cf2\tab\tab\tab\tab + \cf3 ar\cf2 [\cf4 i\cf2 ].getBasePay() + \cf6 "\\t"\cf2  + \cf3 df\cf2 .format(\cf3 ar\cf2 [\cf4 i\cf2 ].getBenefit()) + \cf6 "\\t"\cf2  + (\cf1\b int\cf2\b0 ) (\cf3 ar\cf2 [\cf4 i\cf2 ].getTaxRate() * 100)\cf0\par
+\cf2\tab\tab\tab\tab + \cf6 "%\\t"\cf2  + \cf3 df\cf2 .format(\cf3 ar\cf2 [\cf4 i\cf2 ].getTax()) + \cf6 "\\t"\cf2  + \cf3 df\cf2 .format(\cf3 ar\cf2 [\cf4 i\cf2 ].getSalary()));\cf0\par
+\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println();\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .print(\cf6 "\f1\'bc\'f6\'c1\'a4\'c7\'d2\f0  \f1\'bb\'e7\'bf\'f8\'b8\'ed\f0  \f1\'c0\'d4\'b7\'c2\f0  : "\cf2 );\cf0\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ].setName(\cf3 scan\cf2 .next());\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .print(\cf6 "\f1\'c1\'f7\'b1\'de\f0  \f1\'c0\'d4\'b7\'c2\f0  : "\cf2 );\cf0\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ].setPosition(\cf3 scan\cf2 .next());\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .print(\cf6 "\f1\'b1\'e2\'ba\'bb\'b1\'de\f0  \f1\'c0\'d4\'b7\'c2\f0  : "\cf2 );\cf0\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ].setBasePay(\cf3 scan\cf2 .nextInt());\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .print(\cf6 "\f1\'bc\'f6\'b4\'e7\f0  \f1\'c0\'d4\'b7\'c2\f0  : "\cf2 );\cf0\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ].setBenefit(\cf3 scan\cf2 .nextInt());\cf0\par
+\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ].calc();\cf0\par
+\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println();\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'bc\'f6\'c1\'a4\f0  \f1\'bf\'cf\'b7\'e1\f0 ..."\cf2 );\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  display() \{\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println();\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'bb\'e7\'bf\'f8\'b9\'f8\'c8\'a3\f0\\t\f1\'c0\'cc\'b8\'a7\f0\\t\f1\'c1\'f7\'b1\'de\f0\\t\f1\'b1\'e2\'ba\'bb\'b1\'de\f0\\t\\t\f1\'bc\'f6\'b4\'e7\f0\\t\f1\'bc\'bc\'c0\'b2\f0\\t\f1\'bc\'bc\'b1\'dd\f0\\t\f1\'bf\'f9\'b1\'de\f0 "\cf2 );\cf0\par
+\cf2\tab\tab\cf1\b for\cf2\b0  (\cf1\b int\cf2\b0  \cf4 i\cf2  = 0; \cf4 i\cf2  < \cf3 ar\cf2 .\cf3 length\cf2 ; \cf4 i\cf2 ++) \{\cf0\par
+\cf2\tab\tab\tab\cf1\b if\cf2\b0  (\cf3 ar\cf2 [\cf4 i\cf2 ] != \cf1\b null\cf2\b0 ) \{\cf0\par
+\cf2\tab\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf3 ar\cf2 [\cf4 i\cf2 ].getEmpId() + \cf6 "\\t"\cf2  + \cf3 ar\cf2 [\cf4 i\cf2 ].getName() + \cf6 "\\t"\cf2  + \cf3 ar\cf2 [\cf4 i\cf2 ].getPosition() + \cf6 "\\t"\cf0\par
+\cf2\tab\tab\tab\tab\tab\tab + \cf3 ar\cf2 [\cf4 i\cf2 ].getBasePay() + \cf6 "\\t"\cf2  + \cf3 df\cf2 .format(\cf3 ar\cf2 [\cf4 i\cf2 ].getBenefit()) + \cf6 "\\t"\cf0\par
+\cf2\tab\tab\tab\tab\tab\tab + (\cf1\b int\cf2\b0 ) (\cf3 ar\cf2 [\cf4 i\cf2 ].getTaxRate() * 100) + \cf6 "%\\t"\cf2  + \cf3 df\cf2 .format(\cf3 ar\cf2 [\cf4 i\cf2 ].getTax()) + \cf6 "\\t"\cf0\par
+\cf2\tab\tab\tab\tab\tab\tab + \cf3 df\cf2 .format(\cf3 ar\cf2 [\cf4 i\cf2 ].getSalary()));\cf0\par
+\cf2\tab\tab\tab\} \cf5 // if\cf0\par
+\cf2\tab\tab\} \cf5 // for\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  insertEmp() \{\cf0\par
+\cf2\tab\tab\cf1\b int\cf2\b0  \cf4 i\cf2 ;\cf0\par
+\cf2\tab\tab\cf1\b for\cf2\b0  (\cf4 i\cf2  = 0; \cf4 i\cf2  < \cf3 ar\cf2 .\cf3 length\cf2 ; \cf4 i\cf2 ++) \{\cf0\par
+\cf2\tab\tab\tab\cf1\b if\cf2\b0  (\cf3 ar\cf2 [\cf4 i\cf2 ] == \cf1\b null\cf2\b0 )\cf0\par
+\cf2\tab\tab\tab\tab\cf1\b break\cf2\b0 ;\cf0\par
+\cf2\tab\tab\}\cf0\par
+\par
+\cf2\tab\tab\cf1\b if\cf2\b0  (\cf4 i\cf2  == \cf3 ar\cf2 .\cf3 length\cf2 ) \{\cf0\par
+\cf2\tab\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'c1\'a4\'bf\'f8\f0  \f1\'c3\'ca\'b0\'fa\f0 .."\cf2 );\cf0\par
+\cf2\tab\tab\tab\cf1\b return\cf2\b0 ; \cf5 // \f1\'b8\'de\'bc\'d2\'b5\'e5\'b8\'a6\f0  \f1\'b9\'fe\'be\'ee\'b3\'aa\'b6\'f3\cf0\f0\par
+\cf2\tab\tab\}\cf0\par
+\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ] = \cf1\b new\cf2\b0  SalaryDTO();\cf0\par
+\cf2\tab\tab\cf3 ar\cf2 [\cf4 i\cf2 ].calc();\cf0\par
+\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println();\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'b5\'ee\'b7\'cf\f0  \f1\'bf\'cf\'b7\'e1\f0 ..."\cf2 );\cf0\par
+\cf2\tab\}\cf0\par
+\cf2\}\cf0\f1\par
+}
+ 

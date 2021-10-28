@@ -1,0 +1,9 @@
+class CompTest3 {
+	public static void main(String[] args) {
+	
+	int a = 30; 
+	if (a>0)
+
+	System.out.println("30은" + "짝수이다");
+	}
+}

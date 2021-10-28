@@ -1,0 +1,56 @@
+package miniproject1;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class searchFrame extends JFrame {
+	private JButton idsearchBtn, pwdsearchBtn;
+
+	public searchFrame() {
+		setLayout(null);
+
+		idsearchBtn = new JButton("아이디 찾기");
+		pwdsearchBtn = new JButton("비밀번호 찾기");
+
+		idsearchBtn.setBounds(100, 230, 120, 50);
+		pwdsearchBtn.setBounds(250, 230, 120, 50);
+
+		Container c = getContentPane();
+		c.setBackground(new Color(195, 219, 242));
+
+		c.add(idsearchBtn);
+		c.add(pwdsearchBtn);
+
+		setTitle("아마스빈 사이렌 오더 프로그램");
+		setBounds(300, 100, 700, 700);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		idsearchBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new IdSearchFrame();
+				setVisible(false);
+			}
+		});
+
+		pwdsearchBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new PwdSearchFrame();
+				setVisible(false);
+			}
+		});
+
+	}
+}

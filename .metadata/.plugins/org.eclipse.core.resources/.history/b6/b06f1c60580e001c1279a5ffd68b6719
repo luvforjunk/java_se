@@ -1,0 +1,152 @@
+package miniproject1;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class DeleteFrame extends JFrame {
+	private JLabel idL;
+	private JTextField idT;
+	private JButton cancelBtn, pwdcheckBtn, writeBtn, resetBtn;
+	boolean idok, pwdok, emailok = false;
+
+	public DeleteFrame(String id, String pwd) {
+		AmasvinDAO dao = AmasvinDAO.getInstance();
+		String name = dao.loginMember(id, pwd);
+		setTitle("반갑습니다, " + name + "님 아마스빈입니다");
+
+		JFrame jf = new JFrame();
+		setLayout(null);
+
+		// Label
+		JPanel p = new JPanel();
+		p.setLayout(null);
+
+		idL = new JLabel("탈퇴할 아이디를 입력하세요");
+		idL.setBounds(20, 90, 200, 30);
+		p.add(idL);
+
+		idT = new JTextField();
+		idT.setBounds(20, 120, 200, 30);
+		p.add(idT);
+
+		// Font
+		Font labelF = new Font("맑은고딕", Font.BOLD, 15);
+		Font textF = new Font("맑은고딕", Font.BOLD, 15);
+		Font ButtonF = new Font("맑은고딕", Font.CENTER_BASELINE, 5);
+
+		idL.setFont(labelF);
+		idT.setFont(textF);
+
+		// Button
+		writeBtn = new JButton("탈퇴");
+		resetBtn = new JButton("다시 작성");
+		cancelBtn = new JButton("취소");
+		pwdcheckBtn = new JButton("아이디 확인");
+		pwdcheckBtn.setBounds(365, 260, 115, 30);
+		pwdcheckBtn.setBackground(new Color(255, 255, 204));
+		p.add(pwdcheckBtn);
+		writeBtn.setBounds(20, 530, 150, 60);
+		resetBtn.setBounds(180, 530, 150, 60);
+		cancelBtn.setBounds(340, 530, 150, 60);
+
+		JPanel p2 = new JPanel();
+		p2.setBackground(new Color(195, 219, 242));
+		p2.add(writeBtn);
+		writeBtn.setBackground(new Color(255, 255, 204));
+
+		p2.add(resetBtn);
+		resetBtn.setBackground(new Color(255, 255, 204));
+		p2.add(cancelBtn);
+		cancelBtn.setBackground(new Color(255, 255, 204));
+
+		Container c = getContentPane();
+		c.setBackground(new Color(195, 219, 242));
+		c.add("North", p);
+		c.add("South", p2);
+
+		c.add(idL);
+		c.add(idT);
+		c.add(pwdcheckBtn);
+		c.add(writeBtn);
+		c.add(resetBtn);
+		c.add(cancelBtn);
+
+		setBounds(900, 200, 500, 650);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		writeBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				if (idT.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "아이디를 입력해주세요");
+					return;
+				} else if (idok == true) {
+					JOptionPane.showMessageDialog(null, "아이디 확인 하세요");
+					return;
+				} else {
+					String id = idT.getText();
+
+					// DB
+					AmasvinDAO dao = AmasvinDAO.getInstance();
+					dao.DeleteMember(id);
+
+					JOptionPane.showMessageDialog(null, "탈퇴 되었습니다");
+					dispose();
+					new HomeFrame(id, pwd);
+					setVisible(false);
+				}
+			}
+		});
+
+		cancelBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new HomeFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		resetBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				idT.setText("");
+			}
+		});
+
+		pwdcheckBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AmasvinDAO dao = AmasvinDAO.getInstance(); // 계속 new 할 수 없으니 싱글톤필요
+				String id = idT.getText();
+				String idc = dao.idcheck(id);
+				if (idT.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "아이디를 입력해주세요");
+					return;
+				} else if (idc == null) {
+					idok = true;
+					JOptionPane.showMessageDialog(null, "아이디를 다시 입력하세요");
+					idT.setText("");
+					return;
+				} else {
+					idok = false;
+					JOptionPane.showMessageDialog(null, "탈퇴하시면 1주간 가입이 불가합니다");
+					return;
+				}
+			}
+		});
+
+	}
+}

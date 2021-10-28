@@ -1,0 +1,303 @@
+package miniproject1;
+
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.TimerTask;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+public class HomeTimer extends JFrame implements Runnable {
+	private JButton homeBtn, menuBtn, stampBtn, myBtn, logoutBtn, backBtn1, nextBtn1, backBtn2, nextBtn2;
+	private CardLayout card;
+	private JPanel topP, middleP, lowP;
+	private Image eventImg1, eventImg2, bestImg1, bestImg2, bestImg3, bestImg4, bestImg5;
+	private JLabel imageLabel;
+	private JLabel timer;
+	int count = 3;
+	String id, pwd;
+
+	@Override
+	public void run() {
+		while (true) {
+			timer.setText("00:" + count);
+			count--;
+
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			if (count == 0) {
+				JOptionPane.showMessageDialog(null, "음료가 완성되었습니다. 픽업해주세요.");
+				dispose();
+				new HomeFrame(id, pwd);
+				HomeTimer.this.setVisible(false);
+			}
+
+		}
+	}
+
+	public HomeTimer(String id, String pwd) throws InterruptedException {
+		this.id = id;
+		this.pwd = pwd;
+		Container c = this.getContentPane();
+		timer = new JLabel("", JLabel.CENTER);
+		timer.setFont(new Font("고딕체", Font.BOLD, 70));
+		c.add(timer, "North");
+		Thread t;
+		t = new Thread(HomeTimer.this);
+		t.start();
+//	   Timer timer = new Timer();
+//	   TimerTask timerTask = new TimerTask( ){
+//		@Override
+//		public void run() {
+//			JOptionPane.showMessageDialog(null, "음료 제조가 완료되었습니다.");
+//			dispose();
+//	          new HomeFrame(id, pwd);
+//	          setVisible(false);
+//		}
+//		
+//	   };
+//	   timer.schedule(timerTask,1000,1000);
+
+		AmasvinDAO dao = AmasvinDAO.getInstance();
+		// String name = dao.loginMember(id, pwd);
+		// setTitle("반갑습니다, "+ name+"님 아마스빈입니다");
+
+		JScrollPane scroll = new JScrollPane();
+
+		card = new CardLayout();
+
+		homeBtn = new JButton("홈");
+		menuBtn = new JButton("메뉴");
+		stampBtn = new JButton("스탬프");
+		myBtn = new JButton("내정보");
+		logoutBtn = new JButton("로그아웃");
+		backBtn1 = new JButton("<");
+		nextBtn1 = new JButton(">");
+		backBtn2 = new JButton("<");
+		nextBtn2 = new JButton(">");
+
+		// 버튼(상단부) - 4개
+		JPanel westP = new JPanel(new GridLayout(3, 1));
+		westP.setBackground(new Color(195, 219, 242));
+
+		JPanel wp1 = new JPanel();
+		wp1.setLayout(null);
+		wp1.setBackground(new Color(195, 219, 242));
+
+		JPanel wp2 = new JPanel(new GridLayout(3, 1));
+		JPanel p1 = new JPanel();
+		p1.setBackground(new Color(195, 219, 242));
+		JPanel p2 = new JPanel();
+		p2.add(backBtn1);
+		p2.setBackground(new Color(195, 219, 242));
+		backBtn1.setBackground(new Color(255, 255, 204));
+		JPanel p3 = new JPanel();
+		p3.setBackground(new Color(195, 219, 242));
+
+		JPanel wp3 = new JPanel(new GridLayout(3, 1));
+		JPanel p4 = new JPanel();
+		p4.setBackground(new Color(195, 219, 242));
+		JPanel p5 = new JPanel();
+		p5.add(backBtn2);
+		p5.setBackground(new Color(195, 219, 242));
+		backBtn2.setBackground(new Color(255, 255, 204));
+		JPanel p6 = new JPanel();
+		p6.setBackground(new Color(195, 219, 242));
+
+		westP.add(wp1);
+		westP.add(wp2);
+		westP.add(wp3);
+
+		wp2.add(p1);
+		wp2.add(p2);
+		wp2.add(p3);
+
+		wp3.add(p4);
+		wp3.add(p5);
+		wp3.add(p6);
+
+		JPanel eastP = new JPanel(new GridLayout(3, 1));
+		eastP.setBackground(new Color(195, 219, 242));
+
+		JPanel ep1 = new JPanel();
+		ep1.setLayout(null);
+		ep1.setBackground(new Color(195, 219, 242));
+
+		JPanel ep2 = new JPanel(new GridLayout(3, 1));
+		JPanel p7 = new JPanel();
+		p7.setBackground(new Color(195, 219, 242));
+		JPanel p8 = new JPanel();
+		p8.add(nextBtn1);
+		p8.setBackground(new Color(195, 219, 242));
+		nextBtn1.setBackground(new Color(255, 255, 204));
+		JPanel p9 = new JPanel();
+		p9.setBackground(new Color(195, 219, 242));
+
+		JPanel ep3 = new JPanel(new GridLayout(3, 1));
+		JPanel p10 = new JPanel();
+		p10.setBackground(new Color(195, 219, 242));
+		JPanel p11 = new JPanel();
+		p11.add(nextBtn2);
+		p11.setBackground(new Color(195, 219, 242));
+		nextBtn2.setBackground(new Color(255, 255, 204));
+		JPanel p12 = new JPanel();
+		p12.setBackground(new Color(195, 219, 242));
+
+		eastP.add(ep1);
+		eastP.add(ep2);
+		eastP.add(ep3);
+
+		ep2.add(p7);
+		ep2.add(p8);
+		ep2.add(p9);
+
+		ep3.add(p10);
+		ep3.add(p11);
+		ep3.add(p12);
+
+		// 버튼(하단부) - 5개
+		JPanel p = new JPanel(); // FlowLayout
+		p.setBackground(new Color(195, 219, 242));
+		p.setLayout(new GridLayout(1, 5)); // p를 동서남북으로 나눠라
+		p.add(homeBtn);
+		p.add(menuBtn);
+		p.add(stampBtn);
+		p.add(myBtn);
+		p.add(logoutBtn);
+
+		//
+
+		topP = new JPanel();
+		topP.setBackground(new Color(195, 219, 242));
+
+		ImageIcon imgIcon1 = new ImageIcon("Image/아마스빈프로모션1.png");
+		eventImg1 = imgIcon1.getImage();
+		ImageIcon imgIcon2 = new ImageIcon("Image/아마스빈프로모션2.png");
+		eventImg2 = imgIcon2.getImage();
+		middleP = new JPanel() {
+			@Override
+			public void paint(Graphics g) {
+				super.paint(g);
+				g.drawImage(eventImg1, 0, 0, middleP);
+				g.drawImage(eventImg2, 0, 200, 560, 100, 100, 100, 250, 100, middleP);
+			}
+		};
+
+		ImageIcon imgIcon3 = new ImageIcon("Image/추천메뉴1.png");
+		bestImg1 = imgIcon3.getImage();
+		ImageIcon imgIcon4 = new ImageIcon("Image/추천메뉴2.png");
+		bestImg2 = imgIcon4.getImage();
+		ImageIcon imgIcon5 = new ImageIcon("Image/추천메뉴3.png");
+		bestImg3 = imgIcon5.getImage();
+		ImageIcon imgIcon6 = new ImageIcon("Image/추천메뉴4.png");
+		bestImg4 = imgIcon6.getImage();
+		ImageIcon imgIcon7 = new ImageIcon("Image/추천메뉴5.png");
+		bestImg5 = imgIcon7.getImage();
+//      lowP.setPreferredSize(new Dimension(0, 120));
+//      lowP.setLayout(card);
+		lowP = new JPanel() {
+			@Override
+			public void paint(Graphics g) {
+				super.paint(g);
+				g.drawImage(bestImg1, 0, 0, lowP);
+				g.drawImage(bestImg2, 0, 0, lowP);
+				g.drawImage(bestImg3, 0, 0, lowP);
+				g.drawImage(bestImg4, 0, 0, lowP);
+				g.drawImage(bestImg5, 0, 0, lowP);
+			}
+		};
+
+		JPanel wp = new JPanel(new GridLayout(3, 1, 5, 5));
+		wp.add(topP);
+		wp.add(middleP);
+		wp.add(lowP);
+
+		c.add("Center", scroll);
+		c.add("South", p);
+		c.add("Center", wp);
+		c.add("West", westP);
+		c.add("East", eastP);
+		c.setBackground(new Color(195, 219, 242));
+
+		setBounds(800, 100, 500, 650);
+		setVisible(true);
+		setBackground(new Color(195, 219, 242));
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		homeBtn.setEnabled(false);
+		menuBtn.setEnabled(false);
+		stampBtn.setEnabled(false);
+		myBtn.setEnabled(false);
+		logoutBtn.setEnabled(false);
+
+		// 버튼 이벤트
+		homeBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new HomeFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		menuBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Menu(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		stampBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new StampFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+
+		myBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				// new (id, pwd);
+				setVisible(false);
+			}
+		});
+
+		logoutBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				// new (id, pwd);
+				setVisible(false);
+			}
+		});
+
+	}
+//   public static void main(String[] args) throws InterruptedException {
+//	   new HomeTimer();
+//   }
+}

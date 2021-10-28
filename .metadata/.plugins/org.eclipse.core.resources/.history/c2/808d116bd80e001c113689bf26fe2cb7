@@ -1,0 +1,97 @@
+package miniproject1;
+
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class StampFrame extends JFrame {
+	Image image;
+	private JButton couponBtn, exitBtn;
+	// Image[] image= new Image(("images/æ∆∏∂Ω∫∫Û∑Œ∞Ì.png") );
+
+	public StampFrame(String id, String pwd) {
+		// ArrayList<Image> image_Array = new ArrayList<>();
+		// img2 = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫Ûƒ≥∏Ø≈Õ.png");
+		// image_Array.add(image);
+		AmasvinDAO dao = AmasvinDAO.getInstance(); // ΩÃ±€≈Ê¿∏∑Œ πŸ≤ﬁ
+		int stamp = dao.stampnum(id, pwd);
+		setVisible(true);
+		setBounds(800, 100, 600, 350);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		if (stamp == 0)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡0.png");
+		else if (stamp == 1)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡1.png");
+		else if (stamp == 2)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡2.png");
+		else if (stamp == 3)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡3.png");
+		else if (stamp == 4)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡4.png");
+		else if (stamp == 5)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡5.png");
+		else if (stamp == 6)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡6.png");
+		else if (stamp == 7)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡7.png");
+		else if (stamp >= 8)
+			image = Toolkit.getDefaultToolkit().getImage("Image/æ∆∏∂Ω∫∫ÛΩ∫≈∆«¡8.png");
+
+		couponBtn = new JButton("ƒÌ∆˘πﬂ«‡");
+		if (stamp >= 8)
+			couponBtn.setEnabled(true);
+		else
+			couponBtn.setEnabled(false);
+		Container c = getContentPane();
+		exitBtn = new JButton("¥›±‚");
+		JPanel p = new JPanel(new GridLayout(2, 1));
+		p.add(couponBtn);
+		p.add(exitBtn);
+		c.add(p, "South");
+		exitBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new HomeFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+		couponBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AmasvinDAO dao = AmasvinDAO.getInstance(); // ΩÃ±€≈Ê¿∏∑Œ πŸ≤ﬁ
+				dao.resetstamp(id, pwd);
+				dao.addcoupon(id, pwd);
+				JOptionPane.showMessageDialog(null, "¿Ω∑· 1¿‹ ƒÌ∆˘¿Ã πﬂ«‡µ«æ˙Ω¿¥œ¥Ÿ.");
+				dispose();
+				new HomeFrame(id, pwd);
+				setVisible(false);
+			}
+		});
+
+	}
+
+	public void paint(Graphics g) {
+		super.paint(g);
+
+		g.drawImage(image, 0, 0, this.getSize().width, this.getSize().height, this);
+		// g.drawImage(img2, 10, 330, 500, 350, this);
+	}
+//public static void main(String[] args) {
+//	new StampFrame(id, pwd, stamp);
+//}
+}

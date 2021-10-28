@@ -1,0 +1,22 @@
+import java.io.IOException;
+
+class InputTest {
+	public static void main(String[] args) throws IOException{
+		System.out.print("데이터 : ");
+		int a = System.in.read(); //딱 한개 그것도 문자로만 인정받음.
+		System.in.read(); //flush
+
+		System.out.print("데이터 : ");
+		int b = System.in.read(); //딱 한개 그것도 문자로만 인정받음.
+
+		System.out.println("결과 = " + a + ", " +b);
+	}
+}
+	
+	//키보드를 통해 들어온 데이터는 메모리로 직접적으로 못 들어감. 속도가 안맞아서. 
+	//처리속도가 빠른 메모리가 느린 키보드를 기다려주지 못하니 버퍼라는 아이가 도움을 줌.
+	//a라는 데이터를 넣었을 때 엔터가 같이 들어감. 엔터도 정보로 들어옴.
+	//read();는 한글자씩 읽어옴.
+	//flush - 엔터값 제거. 자바는 flush명령이 따로 없으므로 누군가 대신 읽어주게 해야함.
+	//System.out.read();
+	//엔터를 치면 2가지 동작이 일어남. 1)다음줄로 내려간다 \n(13) 2)앞으로 이동 \r(10)

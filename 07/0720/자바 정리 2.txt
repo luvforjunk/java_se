@@ -1,0 +1,50 @@
+* 객체지향프로그램(OOP - Object Oriented Programming)
+
+* 함수( ) / 메소드( )
+- 명령어들의 집합체
+- 자바는 main method만 알고 있다.
+
+*클래스명
+- 클래스명의 첫글자는 대문자로 시작하고 나머지는 소문자
+단어가 결합일 때는 다시 대문자로 시작한다.
+
+Good Morning
+Good_Morning (_는 공백을 의미)
+GoodMorning
+
+*콘솔(Console)	System
+입력 - 키보드	System. in(.는 누구 안에 있는, 어디 소속이라는 의미)
+출력 - 화면	System. out
+
+Eclipse		메모장
+- Project
+- File		- File(*.java)
+
+*파일
+파일명. 확장자
+자바의 파일명은 반드시 클래스명과 똑같아야 한다.
+
+HelloTest.java 소스
+	컴파일
+HelloTest.class
+	실행
+HelloTest.exe --- X
+
+javac HelloTest.java
+java HelloTest
+
+
+"문자열"
+
+"문자열" + "문자열" -> 결합
+
+\n : new line
+\t : tab
+
+"사과" + 25 -> "사과25"
+"25 + 36 =" + 25 +36
+"25+36=25" +36
+"25+36=2536"
+
+
+

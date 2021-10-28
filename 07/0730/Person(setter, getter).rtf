@@ -1,0 +1,82 @@
+{\rtf1\ansi\ansicpg949\deff0\nouicompat\deflang1033\deflangfe1042{\fonttbl{\f0\fnil Consolas;}{\f1\fnil\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}}
+{\colortbl ;\red127\green0\blue85;\red0\green0\blue0;\red0\green0\blue192;\red63\green127\blue95;\red106\green62\blue62;\red42\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sl276\slmult1\cf1\b\f0\fs16\lang18 package\cf2\b0  basic;\cf0\par
+\par
+\cf1\b class\cf2\b0  Person \{\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  String \cf3 name\cf2 ; \cf4 // private : \f1\'bf\'dc\'ba\'ce\'bf\'a1\'bc\'ad\f0  \f1\'c1\'a2\'b1\'d9\'c0\'bb\f0  \f1\'b8\'f8\'c7\'cf\'b0\'d4\f0  \f1\'b8\'b7\'be\'c6\'c1\'d6\'b4\'c2\f0  \f1\'b0\'cd\cf0\f0\par
+\cf2\tab\cf1\b private\cf2\b0  \cf1\b int\cf2\b0  \cf3 age\cf2 ; \cf4 // \f1\'c0\'da\'bd\'c5\'c0\'c7\f0  \f1\'c5\'ac\'b7\'a1\'bd\'ba\f0  \f1\'be\'c8\'bf\'a1\'bc\'ad\'b8\'b8\f0  \f1\'c1\'a2\'b1\'d9\f0  \f1\'c7\'e3\'bf\'eb\cf0\f0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setName(String \cf5 n\cf2 ) \{ \cf4 // \f1\'b1\'b8\'c7\'f6\cf0\f0\par
+\cf2\tab\tab\cf3 name\cf2  = \cf5 n\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setAge(\cf1\b int\cf2\b0  \cf5 a\cf2 ) \{\cf0\par
+\cf2\tab\tab\cf3 age\cf2  = \cf5 a\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setData(String \cf5 n\cf2 , \cf1\b int\cf2\b0  \cf5 a\cf2 ) \{ \cf4 //\f1\'c7\'d4\'bc\'f6\'c0\'c7\f0  \f1\'c0\'cc\'b8\'a7\'c0\'cc\f0  \f1\'b6\'c8\'b0\'b0\'c0\'cc\f0  \f1\'bb\'fd\'b1\'e4\f0  \f1\'b0\'c9\f0  Overload\f1\'b6\'f3\'b0\'ed\f0  \f1\'c7\'d1\'b4\'d9\f0 .\cf0\par
+\cf2\tab\tab\cf3 name\cf2  = \cf5 n\cf2 ;\cf0\par
+\cf2\tab\tab\cf3 age\cf2  = \cf5 a\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\cf2\tab\cf4 // \f1\'b5\'b7\'c0\'cc\f0  \f1\'b5\'e9\'be\'ee\'bf\'c0\'b4\'c2\f0  \f1\'b8\'de\'bc\'d2\'b5\'e5\'b8\'a6\f0  \f1\'c0\'e2\'b0\'ed\f0  \f1\'c4\'bf\'c7\'c7\'b8\'a6\f0  \f1\'b8\'b8\'b5\'e9\'be\'ee\'bc\'ad\f0  \f1\'b3\'bb\'ba\'b8\'b3\'bb\'b4\'c2\f0  \f1\'b8\'de\'bc\'d2\'b5\'e5\'b8\'a6\f0  \f1\'c7\'cf\'b3\'aa\f0  \f1\'b8\'b8\'b5\'e7\'b4\'d9\f0 .\cf0\par
+\cf2\tab\cf4 // \f1\'b5\'b7\'c0\'cc\f0  \f1\'b5\'e9\'be\'ee\'bf\'c0\'b4\'c2\f0  \f1\'b8\'de\'bc\'d2\'b5\'e5\'b8\'a6\f0  setter(\f1\'b5\'a5\'c0\'cc\'c5\'cd\'b8\'a6\f0  \f1\'b9\'de\'b4\'c2\f0 ), \f1\'b5\'a5\'c0\'cc\'c5\'cd\'b8\'a6\f0  \f1\'b3\'bb\'ba\'b8\'b3\'bb\'b4\'c2\f0  \f1\'b8\'de\'bc\'d2\'b5\'e5\'b8\'a6\f0  getter\f1\'b6\'f3\'b0\'ed\f0  \f1\'c7\'d1\'b4\'d9\f0 .\cf0\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setData() \{\} \cf4 //\f1\'c7\'d4\'bc\'f6\'c0\'c7\f0  \f1\'c0\'cc\'b8\'a7\'c0\'cc\f0  \f1\'b6\'c8\'b0\'b0\'c0\'cc\f0  \f1\'bb\'fd\'b1\'e4\f0  \f1\'b0\'c9\f0  Overload\f1\'b6\'f3\'b0\'ed\f0  \f1\'c7\'d1\'b4\'d9\f0 . \f1\'b8\'de\'bc\'d2\'b5\'e5\'b8\'ed\'c0\'ba\f0  \f1\'b0\'b0\'c0\'b8\'b3\'aa\f0  \f1\'c0\'ce\'bc\'f6\'c7\'fc\'c0\'cc\f0  \f1\'c6\'b2\'b8\'ae\'b0\'c5\'b3\'aa\f0  \f1\'c0\'ce\'bc\'f6\'c0\'c7\f0  \f1\'b0\'b3\'bc\'f6\'b0\'a1\f0  \f1\'c6\'b2\'b8\'ae\'b0\'c5\'b3\'aa\cf0\f0\par
+\cf2\tab\tab\tab\tab\tab\tab\tab\cf4 //\f1\'b0\'ae\'b0\'ed\f0  \f1\'c0\'d6\'b4\'c2\f0  \f1\'b0\'a2\'c0\'da\f0  \f1\'bd\'d6\'b5\'d5\'c0\'cc\'b6\'f3\'b0\'ed\f0  \f1\'c0\'ce\'bd\'c4\f0 . \cf0\par
+\cf2\tab\cf1\b public\cf2\b0  String getName() \{\cf0\par
+\cf2\tab\tab\cf1\b return\cf2\b0  \cf3 name\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b int\cf2\b0  getAge() \{\cf0\par
+\cf2\tab\tab\cf1\b return\cf2\b0  \cf3 age\cf2 ;\cf0\par
+\par
+\cf2\tab\}\cf0\par
+\cf2\}\cf0\par
+\par
+\cf4 //--------------\f1\'b0\'b4\'c3\'bc\'c1\'f6\'c7\'e2\'c7\'c1\'b7\'ce\'b1\'d7\'b7\'a5\cf0\f0\par
+\cf1\b public\cf2\b0  \cf1\b class\cf2\b0  PersonMain \{\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b static\cf2\b0  \cf1\b void\cf2\b0  main(String[] \cf5 args\cf2 ) \{\cf0\par
+\cf2\tab\tab Person \cf5 p\cf2 ; \cf4 // \f1\'b0\'b4\'c3\'bc\cf0\f0\par
+\cf2\tab\tab\cf5 p\cf2  = \cf1\b new\cf2\b0  Person(); \cf4 // \f1\'bb\'fd\'bc\'ba\f0  \f1\'b8\'de\'b8\'f0\'b8\'ae\'b0\'a1\f0  \f1\'c0\'a7\'c4\'a1\'c7\'d8\f0  \f1\'c0\'d6\'b4\'c2\f0  \f1\'c1\'d6\'bc\'d2\cf0\f0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'b0\'b4\'c3\'bc\f0  p ="\cf2  + \cf5 p\cf2 ); \cf4 // \f1\'c1\'d6\'bc\'d2\'b8\'a6\f0  \f1\'b0\'a1\'c1\'ae\'bf\'c2\'b4\'d9\f0 . \f1\'b0\'b4\'c3\'bc\f0  p =basic.Person@7de26db8\cf0\par
+\cf2\tab\tab\cf4 // 16\f1\'c1\'f8\'bc\'f6\f0  \f1\'b7\'b9\'c6\'db\'b7\'b1\'bd\'ba\'b8\'a6\f0  \f1\'b0\'a1\'c1\'ae\'bf\'c2\'b4\'d9\f0 .\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'b0\'b4\'c3\'bc\f0  p ="\cf2  + \cf5 p\cf2 .toString());\cf0\par
+\cf2\tab\tab\cf5 p\cf2 .setName(\cf6 "\f1\'c8\'ab\'b1\'e6\'b5\'bf\f0 "\cf2 ); \cf4 // <- p.name = "\f1\'c8\'ab\'b1\'e6\'b5\'bf\f0 ";\cf0\par
+\cf2\tab\tab\cf4 // p\f1\'bf\'a1\f0  \f1\'bb\'ec\'b0\'ed\f0  \f1\'c0\'d6\'b4\'c2\f0  name\f1\'c7\'d1\'c5\'d7\f0  \f1\'c8\'ab\'b1\'e6\'b5\'bf\'c0\'cc\'b6\'f3\'b4\'c2\f0  \f1\'c0\'cc\'b8\'a7\'c0\'bb\f0  \f1\'c1\'d8\'b4\'d9\f0 .\cf0\par
+\cf2\tab\tab\cf5 p\cf2 .setAge(25); \cf4 // <- p.age = 25;\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'c0\'cc\'b8\'a7\f0 ="\cf2  + \cf5 p\cf2 .getName() + \cf6 "\\t \f1\'b3\'aa\'c0\'cc\f0 ="\cf2  + \cf5 p\cf2 .getAge());\cf0\par
+\par
+\cf2\tab\tab\cf4 // new\f1\'b6\'f3\'b4\'c2\f0  \f1\'bf\'ac\'bb\'ea\'c0\'da\'b8\'a6\f0  \f1\'c0\'cc\'bf\'eb\'c7\'d8\'bc\'ad\f0  \f1\'bb\'fd\'bc\'ba\'c7\'cf\'b8\'e9\f0  \f1\'b8\'de\'b8\'f0\'b8\'ae\f0  heap\f1\'bf\'a1\f0  \f1\'c7\'d2\'b4\'e7\'b5\'c8\'b4\'d9\cf0\f0\par
+\cf2\tab\tab\cf4 // heap \f1\'bf\'b5\'bf\'aa\'bf\'a1\f0  \f1\'c7\'d2\'b4\'e7\'b5\'c8\f0  \f1\'b0\'cd\'c0\'ba\f0  \f1\'c0\'cc\'b8\'a7\'c0\'cc\f0  \f1\'be\'f8\'b4\'d9\f0 . \f1\'c7\'d7\'bb\'f3\f0  \f1\'c1\'d6\'bc\'d2\'b8\'a6\f0  \f1\'c1\'e0\'be\'df\'c7\'d1\'b4\'d9\f0 .\cf0\par
+\par
+\cf2\tab\tab Person \cf5 p2\cf2  = \cf1\b new\cf2\b0  Person();\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'b0\'b4\'c3\'bc\f0  p2 ="\cf2  + \cf5 p2\cf2 );\cf0\par
+\cf2\tab\tab\cf5 p2\cf2 .setName(\cf6 "\f1\'c4\'da\'b3\'ad\f0 "\cf2 );\cf4 // \f1\'c8\'a3\'c3\'e2\cf0\f0\par
+\cf2\tab\tab\cf5 p2\cf2 .setAge(13);\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'c0\'cc\'b8\'a7\f0 ="\cf2  + \cf5 p2\cf2 .getName() + \cf6 "\\t \f1\'b3\'aa\'c0\'cc\f0 ="\cf2  + \cf5 p2\cf2 .getAge());\cf0\par
+\cf2\tab\tab\cf0\par
+\cf2\tab\tab Person \cf5 p3\cf2  = \cf1\b new\cf2\b0  Person();\cf0\par
+\cf2\tab\tab\cf5 p3\cf2 .setData(\cf6 "\f1\'b6\'f3\'c0\'cc\'be\'f0\f0 "\cf2 , 35);\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'c0\'cc\'b8\'a7\f0 ="\cf2  + \cf5 p3\cf2 .getName() + \cf6 "\\t \f1\'b3\'aa\'c0\'cc\f0 ="\cf2  + \cf5 p3\cf2 .getAge());\cf0\par
+\par
+\cf2\tab\tab\cf0\par
+\cf2\tab\tab Person \cf5 p4\cf2  = \cf1\b new\cf2\b0  Person();\cf0\par
+\cf2\tab\tab\cf5 p4\cf2 .setData(); \cf4 //\f1\'bf\'f8\'c7\'cf\'b4\'c2\f0  \f1\'b5\'a5\'c0\'cc\'c5\'cd\'b8\'a6\f0  \f1\'b3\'d6\'be\'ee\'be\'df\f0  \f1\'b0\'a5\f0  \f1\'bc\'f6\f0  \f1\'c0\'d6\'c1\'f6\f0  \f1\'c3\'b3\'b8\'ae\'b5\'c7\'b0\'d4\f0  \f1\'c7\'cf\'b7\'c1\'b8\'e9\f0  \f1\'b8\'de\'bc\'d2\'b5\'e5\'b8\'a6\f0  \f1\'b8\'b8\'b5\'e9\'be\'ee\'c1\'e0\'be\'df\cf0\f0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println(\cf6 "\f1\'c0\'cc\'b8\'a7\f0 ="\cf2 +\cf5 p4\cf2 .getName()+\cf6 "\\t \f1\'b3\'aa\'c0\'cc\f0 ="\cf2 +\cf5 p4\cf2 .getAge());\cf0\par
+\cf2\tab\tab System.\cf3\b\i out\cf2\b0\i0 .println();\cf0\par
+\cf2\tab\}\tab\cf0\par
+\cf2\}\cf0\par
+\par
+\cf4 //\f1\'c7\'d4\'bc\'f6\f0 ()\f1\'be\'c8\'bf\'a1\f0  \f1\'b5\'e9\'be\'ee\'b0\'a1\'b4\'c2\f0  \f1\'b0\'c7\f0  parameter \f1\'b8\'c5\'b0\'b3\'ba\'af\'bc\'f6\f0  \f1\'c8\'a4\'c0\'ba\f0  argument \f1\'c0\'ce\'bc\'f6\'b6\'f3\'b0\'ed\f0  \f1\'c7\'d1\'b4\'d9\cf0\f0\par
+\f1\par
+[\lang1042\'b0\'e1\'b0\'fa]\par
+\cf2\'b0\'b4\'c3\'bc\f0  p =basic.Person@7de26db8\cf0\par
+\cf2\f1\'b0\'b4\'c3\'bc\f0  p =basic.Person@7de26db8\cf0\par
+\cf2\f1\'c0\'cc\'b8\'a7\f0 =\f1\'c8\'ab\'b1\'e6\'b5\'bf\f0\tab  \f1\'b3\'aa\'c0\'cc\f0 =25\cf0\par
+\cf2\f1\'b0\'b4\'c3\'bc\f0  p2 =basic.Person@1175e2db\cf0\par
+\cf2\f1\'c0\'cc\'b8\'a7\f0 =\f1\'c4\'da\'b3\'ad\f0\tab  \f1\'b3\'aa\'c0\'cc\f0 =13\cf0\par
+\cf2\f1\'c0\'cc\'b8\'a7\f0 =\f1\'b6\'f3\'c0\'cc\'be\'f0\f0\tab  \f1\'b3\'aa\'c0\'cc\f0 =35\cf0\par
+\f1\lang18\par
+}
+ 

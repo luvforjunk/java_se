@@ -1,0 +1,138 @@
+package miniproject1;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+public class IdSearchFrame extends JFrame {
+	private JLabel nameL, emailL, emailcheckL;
+	private JTextField nameT, emailT, emailcheckT;
+	private JButton sendBtn, checkBtn, okBtn, cancelBtn;
+	static int num = (int) ((Math.random() * 8999) + 1000);
+	boolean idok, emailok = false;
+
+	public IdSearchFrame() {
+		setLayout(null);
+
+		nameL = new JLabel("이름");
+		emailL = new JLabel("이메일 입력");
+		emailcheckL = new JLabel("인증번호 입력");
+
+		nameT = new JTextField();
+		emailT = new JTextField();
+		emailcheckT = new JTextField();
+
+		sendBtn = new JButton("발송");
+		checkBtn = new JButton("인증");
+		okBtn = new JButton("확인");
+		cancelBtn = new JButton("취소");
+
+		nameL.setBounds(50, 180, 80, 40);
+		nameT.setBounds(140, 180, 200, 40);
+
+		emailL.setBounds(50, 230, 80, 40);
+		emailT.setBounds(140, 230, 200, 40);
+
+		emailcheckL.setBounds(50, 280, 80, 40);
+		emailcheckT.setBounds(140, 280, 200, 40);
+
+		sendBtn.setBounds(350, 230, 70, 40);
+		checkBtn.setBounds(350, 280, 70, 40);
+		okBtn.setBounds(80, 350, 150, 30);
+		cancelBtn.setBounds(255, 350, 150, 30);
+
+		Container c = getContentPane();
+		c.setBackground(new Color(195, 219, 242));
+		c.add(nameL);
+		c.add(nameT);
+		c.add(emailL);
+		c.add(emailT);
+		c.add(emailcheckL);
+		c.add(emailcheckT);
+
+		c.add(sendBtn);
+		c.add(checkBtn);
+		c.add(okBtn);
+		c.add(cancelBtn);
+
+		setTitle("아마스빈 사이렌 오더 프로그램");
+		setBounds(300, 100, 700, 700);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		// 이벤트
+		okBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (nameT.getText().isEmpty() || emailT.getText().isEmpty() || emailcheckT.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "모두 작성해주세요");
+					return;
+				} else if (emailok == false) {
+					JOptionPane.showMessageDialog(null, "이메일 인증하세요");
+					return;
+				} else {
+					String name = nameT.getText();
+					String email = emailT.getText();
+
+					// DB
+					AmasvinDAO dao = AmasvinDAO.getInstance(); // 싱글톤으로 바꿈
+					String idc = dao.idSearchMember(name, email);
+
+					if (idc == null) {
+						JOptionPane.showMessageDialog(null, "정확한 정보를 입력하세요");
+					} else {
+						JOptionPane.showMessageDialog(null, name + "님 아이디는 " + idc + "입니다");
+						dispose();
+						new LoginFrame();
+						setVisible(false);
+					}
+				}
+			}
+		});
+
+		// 이벤트
+		cancelBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new LoginFrame();
+				setVisible(false);
+			}
+		});
+
+		sendBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String user_email = emailT.getText();
+
+				EmailCheck ec = new EmailCheck(user_email, num);
+
+				JOptionPane.showMessageDialog(null, "인증번호가 발송되었습니다" + num);
+			}
+		});
+
+		checkBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (num == Integer.parseInt(emailcheckT.getText())) {
+					emailok = true;
+					JOptionPane.showMessageDialog(null, "이메일 인증 성공");
+				} else {
+					emailok = false;
+					JOptionPane.showMessageDialog(null, "인증번호가 일치하지 않습니다." + "\n" + "다시 입력하세요.");
+					emailcheckT.setText("");
+					// writeBtn.setEnabled(false);
+				}
+			}
+		});
+	}
+}

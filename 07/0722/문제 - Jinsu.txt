@@ -1,0 +1,27 @@
+[문제]
+10진수를 2진수, 8진수, 16진수로 변환하시오.
+단, java.lang.Integer안에 있는 메소드를 사용하시오.
+
+[과정]
+class Jinsu {
+	public static void main(String[] args) {
+		int dec = 250;
+
+		String binary = Integer.toBinaryString(dec);
+		String octal = Integer.toOctalString(dec);
+		String hexa = Integer.toHexString(dec);
+
+		System.out.println("10진수 =" + dec);
+		System.out.println("2진수 =" + binary);
+		System.out.println("8진수 =" + octal);
+		System.out.println("16진수 =" + hexa);
+	}
+}
+
+[결과]
+10진수 =250
+2진수 =11111010
+8진수 =372
+16진수 =fa
+
+***숫자가 아니고 문자열임. 왜? 앞에 String.

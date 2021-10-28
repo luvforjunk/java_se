@@ -1,0 +1,31 @@
+class IfTest2 {
+	public static void main(String[] args) throw IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+	String name = args[0];
+      int a = Integer.parseInt(args[1]); 
+      int b = Integer.parseInt(args[2]);
+      int c = Integer.parseInt(args[3]);
+
+      int tot = .total(a, b, c);
+
+      String avg = sj.average(tot);
+
+   }
+
+   public int total(int a, int b, int c){
+      return a+b+c;
+   }
+
+   public String average(int tot){
+      return String.format("%.2f", tot/3.0);
+   }
+
+}
+		System.out.println("첫번째 과목 점수 :" + );
+		System.out.println("두번째 과목 점수 :" +);
+		System.out.println("세번째 과목 점수 :" +);
+		System.out.println();
+		System.out.println();
+	}
+}
